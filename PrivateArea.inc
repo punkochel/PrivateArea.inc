@@ -1,6 +1,6 @@
 /*
 	Author: punkochel
-	Version: 1.0	
+	Version: 1.1	
 */
 
 #if defined _privatearea_included
@@ -144,6 +144,24 @@ stock AllowEntryToPrivateArea(areaid, playerid = -1) {
 
 			privateAreaInfo[i][BannedPlayerId][playerid] = false;
 			return 1;
+		}
+	}
+	return PRIVATE_AREA_NONE;
+}
+
+stock IsPlayerAddInPrivateArea(playerid, areaid) {
+
+	if (!(0 <= playerid <= MAX_PLAYERS-1)) 
+		return 0;
+	
+	for(new i; i < MAX_PRIVATE_AREA; i++) {
+
+		if(privateAreaInfo[i][AreaId] == areaid) {
+
+			if(privateAreaInfo[i][BannedPlayerId][playerid] == true)
+				return 1;
+			else 
+				return 0;
 		}
 	}
 	return PRIVATE_AREA_NONE;
