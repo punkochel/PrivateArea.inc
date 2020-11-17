@@ -1,6 +1,6 @@
 /*
 	Author: punkochel
-	Version: 1.1	
+	Version: 1.2	
 */
 
 #if defined _privatearea_included
@@ -181,8 +181,9 @@ public OnPlayerEnterDynamicArea(playerid, areaid)
 
 			if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER) 
 				GetVehiclePos(GetPlayerVehicleID(playerid), PlayerCoord_X[playerid], PlayerCoord_Y[playerid], PlayerCoord_Z[playerid]);
+			else
+				GetPlayerPos(playerid, PlayerCoord_X[playerid], PlayerCoord_Y[playerid], PlayerCoord_Z[playerid]);
 
-			GetPlayerPos(playerid, PlayerCoord_X[playerid], PlayerCoord_Y[playerid], PlayerCoord_Z[playerid]);
 			break;
 		}
 		else if(privateAreaInfo[i][AreaId] == areaid) {
